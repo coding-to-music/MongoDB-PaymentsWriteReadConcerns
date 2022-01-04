@@ -149,9 +149,10 @@ def getClientConnDBCollectionWithConcerns(uri, mode):
         wc = 'majority'
         rc = 'linearizable'
 
+                            #  wtimeout=DEFAULT_TIMEOUT_MILLIS,
+
     connection = MongoClient(host=uri, w=wc, readConcernLevel=rc, readPreference='primary',
                              socketTimeoutMS=DEFAULT_TIMEOUT_MILLIS,
-                             wtimeout=DEFAULT_TIMEOUT_MILLIS,
                              connectTimeoutMS=DEFAULT_TIMEOUT_MILLIS,
                              serverSelectionTimeoutMS=DEFAULT_TIMEOUT_MILLIS)
     database = connection[DB_NAME]
@@ -172,7 +173,8 @@ def logSampleStatusOnEachPercent(log_queue, records_per_process, process_id, cou
 
 # Constants
 DEFAULT_TIMEOUT_MILLIS = 2000
-DEFAULT_MONGODB_URL = 'mongodb://localhost:27017'
+# DEFAULT_MONGODB_URL = 'mongodb://localhost:27017'
+DEFAULT_MONGODB_URL = 'mongodb://localhost:4000'
 DEFAULT_TOTAL_PROCESSES = 2
 DEFAULT_MODE = 'local'
 DEFAULT_INSERTS_TOTAL = 1000000
